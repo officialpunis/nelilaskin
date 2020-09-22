@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Nelilaskin</title>
+<style>
+#laskin{
+  border: 6px solid #CCCCCC;
+  width: 398px;
+  height: 496px;
+  border-top: 24px solid #ccc;
+  background-color: #ccc;
+}
+
+.numero{
+  width: 97px;
+  height: 97px;
+  font-size: 26px;
+}
+
+.numero:hover{
+  background-color: #ccc;
+}
+
+.numero:active{
+  background-color: #aaa;
+  box-shadow: 0px 0px 15px #000 inset;
+}
+
+.levea{
+  width: 298px;
+  height: 97px;
+}
+
+#numerot{
+  float: left;
+  clear: none;
+}
+
+#funktiot{
+  float: left;
+  clear: none;
+}
+
+#naytto{
+  float: left;
+  clear: both;
+  width: 390px;
+  height: 100px;
+  background: rgb(148,222,250);
+  background: linear-gradient(144deg, rgba(148,222,250,1) 0%,
+              rgba(255,255,255,1) 16%,
+              rgba(161,223,249,1) 32%,
+              rgba(161,223,249,1) 89%,
+              rgba(31,64,78,1) 100%);
+  font-size: 68px;
+  text-align: right;
+  color: white;
+  text-shadow: -1px -1px 0px #000, 1px 1px 0px #333;
+}
+
+#naytto::placeholder{
+  color: #fff;
+}
+</style>
+</head>
+
+<body>
+<div id="laskin">
+
+  <input type="number" value="1234567890" disabled placeholder="0" id="naytto" />
+
+  <div id="numerot">
+    <input type="button" value="1" class="numero" onClick="lisays(this.value);" />
+    <input type="button" value="2" class="numero" onClick="lisays(this.value);" />
+    <input type="button" value="3" class="numero" onClick="lisays(this.value);" />
+    <br/>
+
+    <input type="button" value="4" class="numero" onClick="lisays(this.value);" />
+    <input type="button" value="5" class="numero" onClick="lisays(this.value);" />
+    <input type="button" value="6" class="numero" onClick="lisays(this.value);" />
+    <br/>
+
+    <input type="button" value="7" class="numero" onClick="lisays(this.value);" />
+    <input type="button" value="8" class="numero" onClick="lisays(this.value);" />
+    <input type="button" value="9" class="numero" onClick="lisays(this.value);" />
+    <br/>
+
+    <input type="button" value="0" class="numero levea" onClick="lisays(this.value);" />
+  </div>
+
+  <div id="funktiot">
+    <input type="button" value="C" class="numero" onClick="tyhjenna();" />
+    <br/>
+
+    <input type="button" value="+" class="numero" onClick="summaa();" />
+    <br/>
+
+    <input type="button" value="-" class="numero" onClick="erota();" />
+    <br/>
+
+    <input type="button" value="=" class="numero" onClick="tulos();" />
+  </div>
+
+</div>
+
+<script>
+var naytto = document.getElementById("naytto");
+var muisti = 0;
+var laskutapa = 0;
+
+function tyhjenna(){
+  naytto.value = "";
+  muisti = 0;
+}
+
+function lisays(arvo){
+  naytto.value += arvo;
+}
+
+function summaa(){
+laskutapa = 1;
+
+if(muisti == 0 ){
+     muisti = parseInt(naytto.value);
+}
+naytto.value = "";
+}
+
+function erota(){
+laskutapa = 2;
+
+if(muisti == 0 ){
+     muisti = parseInt(naytto.value);
+}
+naytto.value = "";
+}
+
+function tulos(){
+var arvo1 = naytto.value;
+
+if(laskutapa == 1){
+   naytto.value = parseInt(arvo1) + muisti;  
+}
+
+ 
+
+if(laskutapa == 2){
+   naytto.value = muisti - parseInt(arvo1);  
+}
+
+}
+</script>
+
+</body>
+</html>
